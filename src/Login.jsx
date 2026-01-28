@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 let Login = () =>{
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
 
+    //executes on each render (initial render and state update)
+    useEffect(()=>{
+      console.log("nothing dependencies")
+    });
+
+    //execute only on state update of email and password (and also with initial render) -- componentDidUpdate
+    useEffect(()=>{
+      console.log("with dependencies array")
+    },[email,password]);
+    
+    //execute only once - on initial render -- componentDidMount
+    useEffect(()=>{
+      // load dta from db 
+      console.log("with empty dependencies array")
+    },[]);
+    
     return <div className="row">
       <div className="col-lg-5 col-md-7 mx-auto">
         <div className="card border-success shadow-lg my-2">
