@@ -17,7 +17,16 @@ let Login = () =>{
     //execute only once - on initial render -- componentDidMount
     useEffect(()=>{
       // load dta from db 
-      console.log("with empty dependencies array")
+      console.log("with empty dependencies array : Login");
+      document.title = "Login";
+    },[]);
+
+    //execute only once - on component unmounting phase = componentWillUnmount phase
+    useEffect(()=>{
+      console.log("start unmount phase"); //we have passed [] so once will execute orlse everytime
+      return () => { 
+          console.log("Component unmounting phase");
+      }
     },[]);
     
     return <div className="row">
