@@ -207,7 +207,7 @@ let Register = () => {
                                         className="form-check-input"
                                         checked={state.receiveNewsLetters === true? true : false}
                                         onChange={(event) => {
-                                            setState({...state,[event.target.name] : event.target.value });
+                                            setState({...state,[event.target.name] : event.target.checked });
                                         }}
                                     />
 
