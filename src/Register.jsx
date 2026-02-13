@@ -1,7 +1,8 @@
 import { wait } from '@testing-library/user-event/dist/utils';
-import React , {useEffect , useState} from 'react';
+import React , {useEffect , useState, useContext} from 'react';
+import { UserContext } from './UserContext';
 
-let Register = () => {
+let Register = (props) => {
     let [state, setState] = useState({
         email : "",
         password: "",
@@ -45,6 +46,7 @@ let Register = () => {
     });
 
     let [message, setMessage] = useState(""); // to show message on register button
+    let userContext = useContext(UserContext);
 
     let validate = () =>{
         console.log("in validate function");
@@ -173,7 +175,15 @@ let Register = () => {
             });
 
             if(response.ok){
-                setMessage(<span className="text-success">Success</span>);
+                let responseBody = await response.json();
+
+                userContext.setUser({
+                    ...userContext.user,
+                    isLoggedIn: true,
+                    currentUserName : responseBody.fullName,
+                    currentUserId : responseBody.id,
+                });
+                props.history.replace("/dashboard");
             }else{
                 //check response ok and db error then setMessage 
                 setMessage(<span className="text-danger">Errors in database connection</span>);
