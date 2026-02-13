@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 
 let Login = (props) =>{
-    let [email, setEmail] = useState("");
-    let [password, setPassword] = useState("");
+    let [email, setEmail] = useState("scott@test.com");
+    let [password, setPassword] = useState("Scott123");
     let userContext = useContext(UserContext);
     console.log("login usercontext : ", userContext);
 
