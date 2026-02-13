@@ -1,6 +1,7 @@
 import React from "react";
 
 function Order(props) {
+  console.log("Order rendered", props);
   return (
     <div className="card my-2 shadow">
       <div className="card-body">
@@ -25,4 +26,4 @@ function Order(props) {
   );
 }
 
-export default Order;
+export default React.memo(Order);
