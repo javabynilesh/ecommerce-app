@@ -107,7 +107,7 @@ let Dashboard = () => {
                 <div className="col-lg-6">
                     <h4 className="py-2 my-2 text-info border-bottom border-info">
                     <i className="fa fa-history"></i> Previous Orders{" "}
-                    <span className="badge badge-info">
+                    <span className="badge bg-info">
                         {OrdersService.getPreviousOrders(orders).length}
                     </span>
                     </h4>
@@ -141,7 +141,7 @@ let Dashboard = () => {
                 <div className="col-lg-6">
                     <h4 className="py-2 my-2 text-primary border-bottom border-primary">
                     <i className="fa fa-shopping-cart"></i> Cart{" "}
-                    <span className="badge badge-primary">
+                    <span className="badge bg-primary">
                         {OrdersService.getCart(orders).length}
                     </span>
                     </h4>
