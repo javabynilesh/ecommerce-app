@@ -18,7 +18,9 @@ function ProductsList(props) {
       let categoriesResponseBody = await categoriesResponse.json();
 
       //request to products table
-      let productsResponse = await ProductsService.fetchProducts();
+      let productsResponse = await fetch(`http://localhost:5000/products?productName=${search}`, {
+                                            method: "GET",
+                                            });
       let productsResponseBody = await productsResponse.json();
 
       //set "category" property into each product
@@ -31,7 +33,7 @@ function ProductsList(props) {
       setProducts(productsResponseBody);
     })();
     
-  }, []);
+  }, [search]);
 
   return <div className="row">
     <div className="col-12">
