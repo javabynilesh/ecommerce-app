@@ -17,3 +17,27 @@ export const ProductsService = {
     });
   },
 };
+
+export const BrandsService = {
+    fetchBrands: () => {
+      return fetch("http://localhost:5000/brands", {
+        method: "GET",
+      });
+    },
+
+    getBrandByBrandId: (brands, prodBrandId) => {
+       return brands.find((brand) => brand.id == prodBrandId);
+    },
+};
+
+export const CategoriesService = {
+  fetchCategories: () => {
+    return fetch("http://localhost:5000/categories",{
+       method: "GET",
+    });
+  },
+
+  getCategoryByCategoryId: (categories, prodCategoryId) => {
+    return categories.find((category) => category.id == prodCategoryId);
+  },
+};

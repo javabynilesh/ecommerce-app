@@ -30,6 +30,15 @@ let NavBar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/dashboard" activeClassName="active" >Dashboard</NavLink>
             </li> : ""}
+
+            {userContext.user.isLoggedIn ? (
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/store" activeClassName="active"> <i className="fa fa-shopping-bag"></i> Store</NavLink>
+            </li>
+            ) : (
+              ""
+            )}
+            
             {!userContext.user.isLoggedIn ? 
             <li className="nav-item">
               <NavLink className="nav-link" activeClassName="active" to="/" exact = {true}>Login</NavLink>
