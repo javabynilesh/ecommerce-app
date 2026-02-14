@@ -12,6 +12,7 @@ let NavBar = () => {
       isLoggedIn : false,
       currentUserName : null,
       currentUserId : null,
+      currentUserRole : null,
     });
 
     window.location.hash = "/";
@@ -26,19 +27,27 @@ let NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            {userContext.user.isLoggedIn ?
+            {userContext.user.isLoggedIn && userContext.user.currentUserRole === "user" ? (
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/dashboard" activeClassName="active" >Dashboard</NavLink>
-            </li> : ""}
+            </li> ): ("")}
 
-            {userContext.user.isLoggedIn ? (
+            {userContext.user.isLoggedIn && userContext.user.currentUserRole === "user" ? (
             <li className="nav-item">
               <NavLink className="nav-link" to="/store" activeClassName="active"> <i className="fa fa-shopping-bag"></i> Store</NavLink>
             </li>
             ) : (
               ""
             )}
-            
+
+            {userContext.user.isLoggedIn && userContext.user.currentUserRole === "admin" ? (
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/products" activeClassName="active"> <i className="fa fa-suitcase"></i> Products</NavLink>
+            </li>
+            ) : (
+              ""
+            )}
+
             {!userContext.user.isLoggedIn ? 
             <li className="nav-item">
               <NavLink className="nav-link" activeClassName="active" to="/" exact = {true}>Login</NavLink>

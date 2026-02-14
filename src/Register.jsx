@@ -168,6 +168,7 @@ let Register = (props) => {
                     gender: state.gender,
                     country: state.country,
                     receiveNewsLetters: state.receiveNewsLetters,
+                    role : "user",
                 }),
                 headers:{
                     "Content-Type": "application/json",
@@ -182,6 +183,7 @@ let Register = (props) => {
                     isLoggedIn: true,
                     currentUserName : responseBody.fullName,
                     currentUserId : responseBody.id,
+                    currentUserRole : responseBody.role,
                 });
                 props.history.replace("/dashboard");
             }else{
